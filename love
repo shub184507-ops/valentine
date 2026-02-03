@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine 💖</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      height: 100vh;
+      display: flex;    
+      justify-content: center;
+      align-items: center;
+      font-family: 'Comic Sans MS', cursive;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 35px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+      max-width: 320px;
+    }
+
+    h1 {
+      color: #ff4d6d;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      color: #ff758c;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 12px 25px;
+      margin: 10px;
+      border: none;
+      border-radius: 30px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #no {
+      background: #ddd;
+      position: absolute;
+    }
+
+    #message {
+      font-size: 18px;
+      color: #ff4d6d;
+      margin-top: 20px;
+      min-height: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Hey my pagal , my cutie 💕</h1>
+    <h2>Will you be my Valentine? 💖</h2>
+
+    <button id="yes">Yes 😘</button>
+    <button id="no">No 🙈</button>
+
+    <div id="message"></div>
+  </div>
+
+  <!-- Romantic Spanish Song -->
+  <audio id="song" loop>
+    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_2c4c7e1b63.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const msg = document.getElementById("message");
+    const song = document.getElementById("song");
+
+    const messages = [
+      "Just wanted to remind you that you’re the best part of my day 💕",
+      "I’m still not over how lucky I got with you 🥰",
+      "Thinking of you and smiling. That’s all 😊",
+      "You’re my favorite person to do absolutely nothing with 💖",
+      "I love you baccha 😘"
+    ];
+
+    let index = 0;
+
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+
+    yesBtn.addEventListener("click", () => {
+      song.play();
+      msg.innerHTML = messages[index];
+      index = (index + 1) % messages.length;
+    });
+  </script>
+
+</body>
+</html>
